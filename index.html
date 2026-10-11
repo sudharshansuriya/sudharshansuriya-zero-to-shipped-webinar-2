@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero to Shipped Resume Parser</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="logo-mark">0&#8594;S</span>
+        <span class="logo-text">Zero to Shipped <em>Resume Parser</em></span>
+      </div>
+      <div class="nav-links">
+        <a href="#analyze">Analyze</a>
+        <a href="#how">How it works</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero container">
+      <h1>Drop a resume PDF.<br>Get a <span class="accent">score</span> in seconds.</h1>
+      <p>
+        Upload a resume and instantly see its score, which skills it shows,
+        and which skills it's missing. No account, no backend &mdash; just upload and read.
+      </p>
+    </section>
+
+    <section class="uploader container" id="analyze">
+      <div class="card state state-upload" id="state-upload">
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="file-input" accept=".pdf" hidden>
+          <div class="dropzone-icon" aria-hidden="true">&#8599;</div>
+          <p class="dropzone-title">Drag &amp; drop your resume PDF here</p>
+          <p class="dropzone-sub">or</p>
+          <button class="btn btn-primary" id="choose-btn" type="button">Choose PDF</button>
+          <p class="dropzone-hint" id="dropzone-hint">PDF only, max ~10 MB</p>
+        </div>
+      </div>
+
+      <div class="card state state-parsing hidden" id="state-parsing">
+        <div class="parse-file" id="parse-file">resume.pdf</div>
+        <div class="parse-track"><div class="parse-fill" id="parse-fill"></div></div>
+        <p class="parse-label" id="parse-label">Uploading&hellip;</p>
+      </div>
+
+      <div class="card state state-results hidden" id="state-results">
+        <div class="results-top">
+          <div class="file-tag" id="results-file">resume.pdf</div>
+          <button class="btn btn-ghost" id="reset-btn" type="button">Analyze another</button>
+        </div>
+
+        <div class="results-grid">
+          <div class="score-block">
+            <div class="gauge">
+              <div class="gauge-fill" id="gauge-fill"></div>
+              <div class="gauge-hole">
+                <span class="score" id="score">0</span>
+                <span class="score-sub">/ 100</span>
+              </div>
+            </div>
+            <p class="score-label">Resume score</p>
+          </div>
+
+          <div class="skills-block">
+            <div class="skills-section">
+              <h2 class="skills-heading present-heading">
+                <span class="dot present-dot"></span>Skills present
+              </h2>
+              <div class="chips" id="present-chips"></div>
+            </div>
+            <div class="skills-section">
+              <h2 class="skills-heading missing-heading">
+                <span class="dot missing-dot"></span>Skills missing
+              </h2>
+              <div class="chips" id="missing-chips"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how container" id="how">
+      <div class="how-step">
+        <span class="how-num">1</span>
+        <p><strong>Upload</strong> a resume PDF by dragging it in or picking a file.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-num">2</span>
+        <p><strong>Parse</strong> reads the text and scores the resume out of 100.</p>
+      </div>
+      <div class="how-step">
+        <span class="how-num">3</span>
+        <p><strong>Compare</strong> the skills it shows against the ones it's missing.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Mock build &mdash; no PDF is uploaded or parsed; results are demo data.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
